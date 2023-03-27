@@ -21,7 +21,7 @@ def test_welcome_question_answerer():
 
 
 # Тестирование работы модели.
-def test_age_question_answerer():
+def test_age_question_answerer1():
     '''
     Данное приложение осуществляет поиск ответа на вопрос в заданном тексте.
     В качестве тестового текста отправляем предложение "Мне 31 год.". Соответственно
@@ -32,3 +32,16 @@ def test_age_question_answerer():
     json_data = response.json()
 
     assert json_data['ANSWER'] == '31'
+
+def test_age_question_answerer2():
+    '''
+    Данное приложение осуществляет поиск ответа на вопрос в заданном тексте.
+    В качестве тестового текста отправляем предложение "Мне 31 год.". Соответственно
+    правильный ответ на вопрос "Сколько мне лет?" должен быть "31".
+    '''
+    response = client.post('/predict/',
+                           json={"context_question": ["My name is Maxim.", "What is my name?"]})
+    json_data = response.json()
+
+    assert json_data['ANSWER'] == 'Maxim'
+    
