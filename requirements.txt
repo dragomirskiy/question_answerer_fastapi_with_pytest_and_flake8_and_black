@@ -4,3 +4,5 @@ transformers
 pydantic
 httpx
 torch
+numpy
+scikit-learn
